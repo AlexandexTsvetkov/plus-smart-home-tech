@@ -10,16 +10,10 @@ import org.apache.kafka.common.errors.SerializationException;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Map;
 
 public class GeneralAvroSerializer<T extends SpecificRecordBase> implements Serializer<T> {
     private final EncoderFactory encoderFactory = EncoderFactory.get();
     private BinaryEncoder encoder;
-
-    @Override
-    public void configure(Map<String, ?> configs, boolean isKey) {
-        // Конфигурация (при необходимости)
-    }
 
     @Override
     public byte[] serialize(String topic, T data) {

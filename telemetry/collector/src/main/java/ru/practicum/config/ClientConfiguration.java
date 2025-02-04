@@ -1,4 +1,4 @@
-package ru.practicum.util;
+package ru.practicum.config;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.avro.specific.SpecificRecordBase;
@@ -8,6 +8,7 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import ru.practicum.util.KafkaProperties;
 
 import java.util.Properties;
 

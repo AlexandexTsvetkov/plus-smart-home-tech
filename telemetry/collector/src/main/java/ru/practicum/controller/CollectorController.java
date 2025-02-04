@@ -21,11 +21,18 @@ public class CollectorController {
 
     @PostMapping("/sensors")
     public void collectSensorEvent(@Valid @RequestBody SensorEvent event) {
+
+        log.info("SensorEvent : {}, {}, {}, {}", event.getId(), event.getHubId(), event.getTimestamp(), event.getType());
+        log.debug("SensorEvent = {}", event);
         sensorService.sendSensorEvent(event);
     }
 
     @PostMapping("/hubs")
     public void collectHubEvent(@Valid @RequestBody HubEvent event) {
+
+        log.info("HubEvent : {}, {}, {}", event.getHubId(), event.getTimestamp(), event.getType());
+        log.debug("HubEvent = {}", event);
+
         hubServise.sendHubEvent(event);
     }
 }

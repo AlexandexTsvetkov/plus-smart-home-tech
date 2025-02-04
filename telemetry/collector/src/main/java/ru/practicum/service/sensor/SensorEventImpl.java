@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import ru.practicum.dto.sensor.SensorEvent;
 import ru.practicum.mapper.SensorMapper;
 import ru.practicum.util.KafkaProperties;
+import ru.yandex.practicum.kafka.telemetry.event.SensorEventAvro;
 
 @Service
 @Slf4j
@@ -21,11 +22,17 @@ public class SensorEventImpl implements SensorService {
 
     @Override
     public void sendSensorEvent(SensorEvent sensorEvent) {
+
+        SensorEventAvro sensorEventAvro = SensorMapper.mapToSensorEventAvro(sensorEvent);
+
         producer.send(new ProducerRecord<>(kafkaProperties.getSensorEventTopic(),
                 null,
                 sensorEvent.getTimestamp().toEpochMilli(),
                 sensorEvent.getId(),
-                SensorMapper.mapToSensorEventAvro(sensorEvent)));
+                sensorEventAvro));
+
+        log.info("Kafka message SensorEvent : {}", sensorEvent.getId());
+        log.debug("Kafka message SensorEvent = {}, {}", sensorEvent.getId(), sensorEventAvro);
     }
 }
 
