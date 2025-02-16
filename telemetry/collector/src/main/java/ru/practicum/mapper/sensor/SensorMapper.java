@@ -1,4 +1,4 @@
-package ru.practicum.mapper;
+package ru.practicum.mapper.sensor;
 
 import org.apache.avro.specific.SpecificRecordBase;
 import ru.practicum.dto.sensor.*;

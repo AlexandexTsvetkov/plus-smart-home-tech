@@ -7,7 +7,7 @@ import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.stereotype.Service;
 import ru.practicum.dto.hub.HubEvent;
-import ru.practicum.mapper.HubMapper;
+import ru.practicum.mapper.hub.HubMapper;
 import ru.practicum.util.KafkaProperties;
 import ru.yandex.practicum.kafka.telemetry.event.HubEventAvro;
 
